@@ -43,7 +43,7 @@ function Get-TeamChannelAnalytics
 
 
     Connect-MicrosoftTeams -AccountId $UserPrincipalName
-    $Groupid = (Get-Team -User $UPN |where{$_.displayname -eq $TeamDisplayName}).GroupID
+    $Groupid = (Get-Team -User $UserPrincipalName |where{$_.displayname -eq $TeamDisplayName}).GroupID
     $Channels = Get-TeamChannel -GroupId $GroupID
 
     $ChannelsStats = @()
