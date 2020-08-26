@@ -32,7 +32,7 @@ function Get-TeamChannelAnalytics
     [Parameter(Mandatory = $True)]
           [string]$Bearer,
     [Parameter(Mandatory = $False)]
-      	[string]$Path
+      	[string]$Path = "."
     )
 
     #Build the Headers based on web request
