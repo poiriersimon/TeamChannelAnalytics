@@ -42,7 +42,7 @@ function Get-TeamChannelAnalytics
         }
 
 
-    Connect-MicrosoftTeams -AccountId $UserPrincipalName
+    Connect-MicrosoftTeams
     $Groupid = (Get-Team -User $UserPrincipalName |where{$_.displayname -eq $TeamDisplayName}).GroupID
     $Channels = Get-TeamChannel -GroupId $GroupID
 
