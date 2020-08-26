@@ -55,19 +55,19 @@ function Get-TeamChannelAnalytics
         $ChannelStat = New-Object PSObject
         $ChannelStat | Add-Member NoteProperty -Name "Channel" -Value $Channel.DisplayName
         $ChannelStat | Add-Member NoteProperty -Name "replyMessages" -Value $Data.channels.metrics.replyMessages.value
-        $ChannelStat | Add-Member NoteProperty -Name "LastreplyMessages" -Value $Data.channels.metrics.replyMessages.timeSeries | sort -Descending date | where {$_.value -gt 0} |select -First 1
+        $ChannelStat | Add-Member NoteProperty -Name "LastreplyMessages" -Value $($Data.channels.metrics.replyMessages.timeSeries | sort -Descending date | where {$_.value -gt 0} |select -First 1).Date
         $ChannelStat | Add-Member NoteProperty -Name "postMessages" -Value $Data.channels.metrics.postMessages.value
-        $ChannelStat | Add-Member NoteProperty -Name "LastpostMessages" -Value $Data.channels.metrics.postMessages.timeSeries | sort -Descending date | where {$_.value -gt 0} |select -First 1
+        $ChannelStat | Add-Member NoteProperty -Name "LastpostMessages" -Value $($Data.channels.metrics.postMessages.timeSeries | sort -Descending date | where {$_.value -gt 0} |select -First 1).Date
         $ChannelStat | Add-Member NoteProperty -Name "meetingsOrganized" -Value $Data.channels.metrics.meetingsOrganized.value
-        $ChannelStat | Add-Member NoteProperty -Name "LastmeetingsOrganized" -Value $Data.channels.metrics.meetingsOrganized.timeSeries | sort -Descending date | where {$_.value -gt 0} |select -First 1
+        $ChannelStat | Add-Member NoteProperty -Name "LastmeetingsOrganized" -Value $($Data.channels.metrics.meetingsOrganized.timeSeries | sort -Descending date | where {$_.value -gt 0} |select -First 1).Date
         $ChannelStat | Add-Member NoteProperty -Name "activeUsers" -Value $Data.channels.metrics.activeUsers.value
-        $ChannelStat | Add-Member NoteProperty -Name "LastactiveUsers" -Value $Data.channels.metrics.activeUsers.timeSeries | sort -Descending date | where {$_.value -gt 0} |select -First 1
+        $ChannelStat | Add-Member NoteProperty -Name "LastactiveUsers" -Value $($Data.channels.metrics.activeUsers.timeSeries | sort -Descending date | where {$_.value -gt 0} |select -First 1).Date
         $ChannelStat | Add-Member NoteProperty -Name "channelMessages" -Value $Data.channels.metrics.channelMessages.value
-        $ChannelStat | Add-Member NoteProperty -Name "LastchannelMessages" -Value $Data.channels.metrics.channelMessages.timeSeries | sort -Descending date | where {$_.value -gt 0} |select -First 1
+        $ChannelStat | Add-Member NoteProperty -Name "LastchannelMessages" -Value $($Data.channels.metrics.channelMessages.timeSeries | sort -Descending date | where {$_.value -gt 0} |select -First 1).Date
         $ChannelStat | Add-Member NoteProperty -Name "reactions" -Value $Data.channels.metrics.reactions.value
-        $ChannelStat | Add-Member NoteProperty -Name "Lastreactions" -Value $Data.channels.metrics.reactions.timeSeries | sort -Descending date | where {$_.value -gt 0} |select -First 1
+        $ChannelStat | Add-Member NoteProperty -Name "Lastreactions" -Value $($Data.channels.metrics.reactions.timeSeries | sort -Descending date | where {$_.value -gt 0} |select -First 1).Date
         $ChannelStat | Add-Member NoteProperty -Name "mentions" -Value $Data.channels.metrics.mentions.value
-        $ChannelStat | Add-Member NoteProperty -Name "Lastmentions" -Value $Data.channels.metrics.mentions.timeSeries | sort -Descending date | where {$_.value -gt 0} |select -First 1
+        $ChannelStat | Add-Member NoteProperty -Name "Lastmentions" -Value $($Data.channels.metrics.mentions.timeSeries | sort -Descending date | where {$_.value -gt 0} |select -First 1).Date
         $ChannelsStats += $ChannelStat
     }
     $ChannelsStats | Export-csv "$($Path)\$($TeamDisplayName)-Analytics-$(Get-date -Format yyyy-MM-dd).csv" -NoTypeInformation
