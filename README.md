@@ -11,7 +11,7 @@ Be aware than the bearer have the same assess as you have for up to an hour, tre
 * Click on the "..." next to a Team you are the owner and Select Manage Team
 ![ManageTeam](./images/ManageTeam.png)
 * Clear the current view
-![ManageTeam](./images/ManageTeam.png)
+![ClearCurrentView](./images/ClearCurrentView.png)
 * Click on Channels
 ![Channels](./images/Channels.png)
 * In the Developper View, select the request named "allchannels"
